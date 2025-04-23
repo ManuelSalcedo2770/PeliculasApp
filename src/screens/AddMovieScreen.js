@@ -16,6 +16,19 @@ import { v4 as uuidv4 } from 'uuid';
 import { useMovies } from '../data/MoviesContext';
 
 export default function AddMovieScreen({ navigation }) {
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      title: 'Añadir Película', // Título del header
+      headerStyle: {
+        backgroundColor: '#1c1c1c', // Fondo oscuro
+      },
+      headerTintColor: '#FFD700', // Texto dorado
+      headerTitleStyle: {
+        fontSize: 20,
+      },
+    });
+  }, [navigation]);
+
   const { addMovie } = useMovies();
   const [title, setTitle] = useState('');
   const [image, setImage] = useState('');
@@ -26,13 +39,11 @@ export default function AddMovieScreen({ navigation }) {
   const [synopsis, setSynopsis] = useState('');
 
   const handleAddMovie = () => {
-    // Validación básica
     if (!title || !image || !category || !year || !rating || !classification || !synopsis) {
       Alert.alert('Error', 'Todos los campos son obligatorios');
       return;
     }
 
-    // Crear nueva película
     const newMovie = {
       id: uuidv4(),
       title,
@@ -61,7 +72,7 @@ export default function AddMovieScreen({ navigation }) {
         style={{ flex: 1 }}
       >
         <ScrollView contentContainerStyle={styles.scrollContent}>
-          <Text style={styles.header}>Añadir Nueva Película</Text>
+          <Text style={styles.header}>Nueva Película</Text>
 
           <View style={styles.formGroup}>
             <Text style={styles.label}>Título:</Text>
@@ -151,7 +162,7 @@ export default function AddMovieScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f8f8f8',
+    backgroundColor: '#1c1c1c', // Fondo oscuro
   },
   scrollContent: {
     padding: 20,
@@ -161,7 +172,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
-    color: '#333',
+    color: '#FFD700', // Color dorado
+    fontFamily: 'CinematicFont', // Fuente personalizada
   },
   formGroup: {
     marginBottom: 15,
@@ -170,15 +182,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 5,
-    color: '#333',
+    color: '#FFD700', // Color dorado
   },
   input: {
-    backgroundColor: '#fff',
+    backgroundColor: '#2c2c2c', // Fondo oscuro para los campos
     borderRadius: 8,
     padding: 12,
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: '#FFD700', // Borde dorado
     fontSize: 16,
+    color: '#fff', // Texto blanco
   },
   textArea: {
     height: 120,

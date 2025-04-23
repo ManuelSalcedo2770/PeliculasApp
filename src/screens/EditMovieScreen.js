@@ -17,6 +17,19 @@ export default function EditMovieScreen({ route, navigation }) {
   const { movie } = route.params;
   const { updateMovie } = useMovies();
 
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      title: 'Editar Película', // Título del header
+      headerStyle: {
+        backgroundColor: '#1c1c1c', // Fondo oscuro
+      },
+      headerTintColor: '#FFD700', // Texto dorado
+      headerTitleStyle: {
+        fontSize: 20,
+      },
+    });
+  }, [navigation]);
+
   const [title, setTitle] = useState(movie.title);
   const [image, setImage] = useState(movie.image);
   const [category, setCategory] = useState(movie.category);
@@ -26,13 +39,11 @@ export default function EditMovieScreen({ route, navigation }) {
   const [synopsis, setSynopsis] = useState(movie.synopsis);
 
   const handleUpdateMovie = () => {
-    // Validación básica
     if (!title || !image || !category || !year || !rating || !classification || !synopsis) {
       Alert.alert('Error', 'Todos los campos son obligatorios');
       return;
     }
 
-    // Actualizar película
     const updatedMovie = {
       ...movie,
       title,
@@ -150,7 +161,7 @@ export default function EditMovieScreen({ route, navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f8f8f8',
+    backgroundColor: '#1c1c1c', // Fondo oscuro
   },
   scrollContent: {
     padding: 20,
@@ -160,7 +171,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
-    color: '#333',
+    color: '#FFD700', // Color dorado
+    fontFamily: 'CinematicFont', // Fuente personalizada
   },
   formGroup: {
     marginBottom: 15,
@@ -169,15 +181,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 5,
-    color: '#333',
+    color: '#FFD700', // Color dorado
   },
   input: {
-    backgroundColor: '#fff',
+    backgroundColor: '#2c2c2c', // Fondo oscuro para los campos
     borderRadius: 8,
     padding: 12,
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: '#FFD700', // Borde dorado
     fontSize: 16,
+    color: '#fff', // Texto blanco
   },
   textArea: {
     height: 120,

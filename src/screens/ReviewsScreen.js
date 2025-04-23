@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import {
   StyleSheet,
   View,
@@ -15,6 +15,19 @@ import { useMovies } from '../data/MoviesContext';
 export default function ReviewsScreen({ route, navigation }) {
   const { movie } = route.params;
   const { deleteReview } = useMovies();
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: `Reseñas de ${movie.title}`, // Título dinámico basado en la película
+      headerStyle: {
+        backgroundColor: '#1c1c1c', // Fondo oscuro
+      },
+      headerTintColor: '#FFD700', // Texto dorado
+      headerTitleStyle: {
+        fontSize: 20,
+      },
+    });
+  }, [navigation, movie.title]);
 
   const handleEditReview = (review, index) => {
     navigation.navigate('EditReview', {
@@ -71,7 +84,7 @@ export default function ReviewsScreen({ route, navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.headerContainer}>
-        <Text style={styles.movieTitle}>Reseñas de {movie.title}</Text>
+        <Text style={styles.movieTitle}>Reviews de {movie.title}</Text>
         <TouchableOpacity
           style={styles.addReviewButton}
           onPress={() => navigation.navigate('AddReview', { movie })}
@@ -113,7 +126,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    backgroundColor: '#f8f8f8',
+    backgroundColor: '#1c1c1c', // Fondo oscuro
   },
   headerContainer: {
     flexDirection: 'row',
@@ -125,7 +138,9 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: 'bold',
     flex: 1,
-    color: '#333',
+    color: '#FFD700', // Color dorado
+    textAlign: 'center',
+    fontFamily: 'CinematicFont', // Fuente personalizada
   },
   addReviewButton: {
     padding: 5,
@@ -135,15 +150,16 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   reviewCard: {
-    backgroundColor: '#fff',
+    backgroundColor: '#2c2c2c', // Fondo oscuro para las tarjetas
     borderRadius: 8,
     padding: 16,
     marginBottom: 12,
-    elevation: 2,
+    borderWidth: 1,
+    borderColor: '#FFD700', // Borde dorado
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
   },
   reviewHeader: {
     flexDirection: 'row',
@@ -154,7 +170,7 @@ const styles = StyleSheet.create({
   username: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#FFD700', // Texto dorado
     flex: 1,
   },
   actionButtons: {
@@ -167,6 +183,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
   },
   editButton: {
     backgroundColor: '#2196F3',
@@ -177,7 +197,7 @@ const styles = StyleSheet.create({
   comment: {
     fontSize: 14,
     lineHeight: 20,
-    color: '#555',
+    color: '#ddd', // Texto claro
   },
   emptyContainer: {
     flex: 1,
@@ -188,7 +208,7 @@ const styles = StyleSheet.create({
   emptyText: {
     textAlign: 'center',
     fontSize: 16,
-    color: '#888',
+    color: '#FFD700', // Texto dorado
     marginBottom: 15,
   },
   emptyAddButton: {
@@ -196,6 +216,8 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 25,
+    borderWidth: 1,
+    borderColor: '#FFD700', // Borde dorado
   },
   emptyAddText: {
     color: '#fff',
@@ -204,6 +226,6 @@ const styles = StyleSheet.create({
   footer: {
     paddingTop: 10,
     borderTopWidth: 1,
-    borderTopColor: '#eee',
+    borderTopColor: '#FFD700', // Línea dorada
   },
 });

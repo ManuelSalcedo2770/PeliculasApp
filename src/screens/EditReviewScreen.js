@@ -16,17 +16,28 @@ export default function EditReviewScreen({ route, navigation }) {
   const { movie, reviewIndex, review } = route.params;
   const { updateReview } = useMovies();
 
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      title: 'Editar Reseña', // Título del header
+      headerStyle: {
+        backgroundColor: '#1c1c1c', // Fondo oscuro
+      },
+      headerTintColor: '#FFD700', // Texto dorado
+      headerTitleStyle: {
+        fontSize: 20,
+      },
+    });
+  }, [navigation]);
+
   const [username, setUsername] = useState(review.username);
   const [comment, setComment] = useState(review.comment);
 
   const handleUpdateReview = () => {
-    // Validación básica
     if (!username || !comment) {
       Alert.alert('Error', 'Por favor complete todos los campos');
       return;
     }
 
-    // Actualizar reseña
     const updatedReview = {
       username,
       comment,
@@ -48,7 +59,7 @@ export default function EditReviewScreen({ route, navigation }) {
         style={{ flex: 1 }}
       >
         <View style={styles.content}>
-          <Text style={styles.header}>Editar Reseña</Text>
+          <Text style={styles.header}>Editar Review</Text>
 
           <View style={styles.formGroup}>
             <Text style={styles.label}>Nombre de Usuario:</Text>
@@ -86,7 +97,7 @@ export default function EditReviewScreen({ route, navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f8f8f8',
+    backgroundColor: '#1c1c1c', // Fondo oscuro
   },
   content: {
     padding: 20,
@@ -97,7 +108,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
-    color: '#333',
+    color: '#FFD700', // Color dorado
+    fontFamily: 'CinematicFont', // Fuente personalizada
   },
   formGroup: {
     marginBottom: 15,
@@ -106,15 +118,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 5,
-    color: '#333',
+    color: '#FFD700', // Color dorado
   },
   input: {
-    backgroundColor: '#fff',
+    backgroundColor: '#2c2c2c', // Fondo oscuro para los campos
     borderRadius: 8,
     padding: 12,
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: '#FFD700', // Borde dorado
     fontSize: 16,
+    color: '#fff', // Texto blanco
   },
   textArea: {
     height: 150,
