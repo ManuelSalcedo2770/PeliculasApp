@@ -1,15 +1,7 @@
 import React, { useState } from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-  TextInput,
-  Button,
-  SafeAreaView,
-  KeyboardAvoidingView,
-  Platform,
-  Alert,
-} from 'react-native';
+import {StyleSheet,View,Text,TextInput,
+  Button,SafeAreaView,KeyboardAvoidingView,
+  Platform,Alert,} from 'react-native';
 import { useMovies } from '../data/MoviesContext';
 
 export default function AddReviewScreen({ route, navigation }) {
@@ -132,7 +124,7 @@ const styles = StyleSheet.create({
     color: '#fff', // Texto blanco
   },
   textArea: {
-    height: 150,
+    height: 60,
     textAlignVertical: 'top',
     color: '#fff', // Texto blanco
   },

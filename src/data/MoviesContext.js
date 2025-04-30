@@ -27,16 +27,18 @@ export const MoviesProvider = ({ children }) => {
 
   // Funciones para gestionar reseñas
   const addReview = (movieId, review) => {
-    setMovies(
-      movies.map((movie) =>
+    setMovies((prevMovies) => {
+      const updatedMovies = prevMovies.map((movie) =>
         movie.id === movieId
           ? {
               ...movie,
               reviews: movie.reviews ? [...movie.reviews, review] : [review],
             }
           : movie
-      )
-    );
+      );
+      console.log('Películas actualizadas (addReview):', updatedMovies);
+      return updatedMovies;
+    });
   };
 
   const updateReview = (movieId, reviewIndex, updatedReview) => {
@@ -55,16 +57,18 @@ export const MoviesProvider = ({ children }) => {
   };
 
   const deleteReview = (movieId, reviewIndex) => {
-    setMovies(
-      movies.map((movie) =>
+    setMovies((prevMovies) => {
+      const updatedMovies = prevMovies.map((movie) =>
         movie.id === movieId
           ? {
               ...movie,
               reviews: movie.reviews.filter((_, index) => index !== reviewIndex),
             }
           : movie
-      )
-    );
+      );
+      console.log('Películas actualizadas (deleteReview):', updatedMovies);
+      return updatedMovies;
+    });
   };
 
   return (

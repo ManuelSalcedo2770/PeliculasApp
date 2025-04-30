@@ -1,14 +1,6 @@
 import React, { useState } from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-  TextInput,
-  Button,
-  SafeAreaView,
-  KeyboardAvoidingView,
-  Platform,
-  Alert,
+import {StyleSheet,View,Text,TextInput,Button,
+  SafeAreaView,KeyboardAvoidingView,Platform,Alert,
 } from 'react-native';
 import { useMovies } from '../data/MoviesContext';
 

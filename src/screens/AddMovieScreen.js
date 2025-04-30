@@ -81,6 +81,7 @@ export default function AddMovieScreen({ navigation }) {
               value={title}
               onChangeText={setTitle}
               placeholder="Título de la película"
+              placeholderTextColor="gray"
             />
           </View>
 
@@ -91,6 +92,7 @@ export default function AddMovieScreen({ navigation }) {
               value={image}
               onChangeText={setImage}
               placeholder="https://example.com/image.jpg"
+              placeholderTextColor="gray"
             />
           </View>
 
@@ -101,6 +103,7 @@ export default function AddMovieScreen({ navigation }) {
               value={category}
               onChangeText={setCategory}
               placeholder="Drama, Comedia, Acción, etc."
+              placeholderTextColor="gray"
             />
           </View>
 
@@ -111,6 +114,7 @@ export default function AddMovieScreen({ navigation }) {
               value={year}
               onChangeText={setYear}
               placeholder="Año de lanzamiento"
+              placeholderTextColor="gray"
               keyboardType="numeric"
             />
           </View>
@@ -122,6 +126,7 @@ export default function AddMovieScreen({ navigation }) {
               value={rating}
               onChangeText={setRating}
               placeholder="Calificación (0-10)"
+              placeholderTextColor="gray"
               keyboardType="numeric"
             />
           </View>
@@ -133,6 +138,7 @@ export default function AddMovieScreen({ navigation }) {
               value={classification}
               onChangeText={setClassification}
               placeholder="G, PG, PG-13, R, etc."
+              placeholderTextColor="gray"
             />
           </View>
 
@@ -143,6 +149,7 @@ export default function AddMovieScreen({ navigation }) {
               value={synopsis}
               onChangeText={setSynopsis}
               placeholder="Escribe la sinopsis de la película..."
+              placeholderTextColor="gray"
               multiline
               numberOfLines={6}
             />

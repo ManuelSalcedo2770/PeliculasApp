@@ -13,7 +13,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { useMovies } from '../data/MoviesContext';
 
 export default function ReviewsScreen({ route, navigation }) {
-  const { movie } = route.params;
+  const { movies } = useMovies();
+  const movie = movies.find((m) => m.id === route.params.movie.id);
   const { deleteReview } = useMovies();
 
   useLayoutEffect(() => {
